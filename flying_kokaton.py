@@ -13,13 +13,12 @@ def main():
     tmr = 0
     kk_img = pg.image.load("fig/3.png")
     kk_img = pg.transform.flip(kk_img,True,False)
-    kk_img = pg.transform.rotozoom(kk_img,10,1.0)
     bg_img2 = pg.transform.flip(bg_img,True,False)
     kk_rct = kk_img.get_rect()
     kk_rct.center = 300,200
     while True:
         height_mv = 0
-        weight_mv = 0
+        width_mv = 0 - 1
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
@@ -35,11 +34,11 @@ def main():
         if key_lst[pg.K_DOWN]:
             height_mv += 1
         if key_lst[pg.K_LEFT]:
-            weight_mv -= 1
+            width_mv -= 1
         if key_lst[pg.K_RIGHT]:
-            weight_mv += 1
+            width_mv += 2
         screen.blit(kk_img,kk_rct)
-        kk_rct.move_ip((weight_mv - 1,height_mv))
+        kk_rct.move_ip((width_mv,height_mv))
         pg.display.update()
         tmr += 1        
         clock.tick(200)
