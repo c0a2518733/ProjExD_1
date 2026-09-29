@@ -14,13 +14,17 @@ def main():
     bird_img = pg.image.load("fig/3.png")
     bird_img = pg.transform.flip(bird_img,True,False)
     bird_img = pg.transform.rotozoom(bird_img,10,1.0)
+    bg_img2 = pg.transform.flip(bg_img,True,False)
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
         screen.blit(bg_img, [0, 0])
-        x=tmr
-        screen.blit(bird_img,[-x,200])
+        x=tmr % 3200
+        screen.blit(bg_img,[-x,0])
+        screen.blit(bg_img2,[-x+1600,0])
+        screen.blit(bg_img,[-x+3200,0])
+        screen.blit(bird_img,[300,200])
         pg.display.update()
         tmr += 1        
         clock.tick(200)
